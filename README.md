@@ -1,6 +1,8 @@
 # Minimal Subset Optimizer
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https://github.com/lavakin/TraP-GA&label=Visitors&countColor=%23263759&style=flat)
 
 ## Overview
 
@@ -44,3 +46,11 @@ GA_utils.plot_pareto(ress,par_fit,output_folder)
 ```python
 GA_utils.get_results(pop,res_fit,output_folder,name_of_elements_of_the_set)
 ```
+## Contributing
+
+Contributions to this project are welcome. If you have any ideas for improvements, new features, or bug fixes, please submit a pull request. For major changes, please open an issue to discuss the proposed modifications.
+
+
+## License
+
+This project is licensed under the MIT License. Feel free to use and modify the code according to the terms of this license.
