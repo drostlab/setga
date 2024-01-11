@@ -161,7 +161,7 @@ def plot_pareto(pareto,par,folder,upper_bound = None,lower_bound = None):
     # Save the plot as an image
     
     plt.savefig(os.path.join(folder, "pareto_front.png")) 
-    plt.show()
+    #plt.show()
 
 def get_results_from_pareto(solutions,pareto,folder,names):
     pareto_filtered = pareto[np.logical_and(pareto[:,1] < 0.5,pareto[:,1] > 0.1)]
