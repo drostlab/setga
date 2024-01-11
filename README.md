@@ -14,19 +14,33 @@ Minimal Subset Optimizer is a small Python library designed to extract a minimal
 
 
 ## Usage
-
+This package is used by [TraP-GA](https://github.com/lavakin/TraP-GA), you might want to have a look.
+### Getting optimized solutions and pareto front:
 ```python
 # Example Usage
 from set_subset_optimizer import SubsetOptimizer
 
-# Create an instance of the optimizer
-optimizer = SubsetOptimizer()
+pop,pareto_front = GA_select.run_minimizer(num_of_elements_in_the_set,fitness_function,stats_by,stats_names_list, 
+                  eval_func_kwargs=eval_func_kwargs=,
+                  mutation_rate = 0.001,crossover_rate = 0.02, 
+                  pop_size = 150, num_gen = num_generations, num_islands = 8, mutation = "bit_flip" , 
+                  crossover =  "uniform_partialy_matched",
+                  selection = "SPEA2",frac_init_not_removed = 0.005)
+```
 
-# Define your input set and functions to optimize
-input_set = {1, 2, 3, 4, 5}
-objective_functions = [lambda subset: len(subset), lambda subset: sum(subset)]
+```python
+res_fit = np.array([end_evaluate_individual(x) for x in pop])
 
-# Optimize the subset
-optimized_subset = optimizer.optimize_subset(input_set, objective_functions)
+pop = np.array(pop)
+par = np.array([list(x) for x in pareto_front[0]])
+par_fit = np.array([end_evaluate_individual(x) for x in par])
+```
 
-print("Optimized Subset:", optimized_subset)
+### Plotting the pareto front
+```python
+GA_utils.plot_pareto(ress,par_fit,output_folder)
+```
+### Extracting a final minimizing subset
+```python
+GA_utils.get_results(pop,res_fit,output_folder,name_of_elements_of_the_set)
+```
