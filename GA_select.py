@@ -2,7 +2,7 @@ from deap import base, creator, tools
 import random
 import numpy as np
 import array
-from select_minimal import GA_utils
+from SetMiG import GA_utils
 
 class WrongType(Exception):
     def __init__(self, message):
