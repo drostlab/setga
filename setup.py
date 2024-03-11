@@ -4,7 +4,6 @@ setup(
   packages = ['SetMiGA'],   
   version = '0.1',      
   license='MIT',       
-  py_modules=['utils', 'select'],
   description = 'library designed to extract a minimal subset from a given set, optimizing a given (set of) objective(s). Based on the DEAP library.',   # Give a short description about your library
   author = 'Nikola Kalábová',              
   author_email = 'nikola@kalabova.eu',     

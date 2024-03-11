@@ -2,7 +2,7 @@ from deap import base, creator, tools
 import random
 import numpy as np
 import array
-from SetMiG import utils
+from SetMiGA import utils
 
 class WrongType(Exception):
     def __init__(self, message):
