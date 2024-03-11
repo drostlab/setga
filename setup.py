@@ -16,8 +16,7 @@ setup(
           "matplotlib",
       ],
   classifiers=[
-    'Development Status :: 3 - Alpha',   
-    'Topic :: Evolutionary algorithms :: Build Tools',
+    'Development Status :: 3 - Alpha',
     'License :: OSI Approved :: MIT License',  
   ],
 )
