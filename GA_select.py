@@ -102,15 +102,9 @@ def run_minimizer(set_size,eval_ind, stats_by,stats_names,eval_func_kwargs={},mu
     toolbox.register("migrate",tools.migRing,k=10,selection = toolbox.select)
 
     stats = tools.Statistics()
-    """
+
     for i,s in enumerate(["Num removed"] + stats_names):
-        print(s)
-        print(i)
-        stats.register(s, lambda x: x[np.argmin([ind.fitness.values[stats_by] for ind in x])].fitness.values[i])
-    """
-    stats = tools.Statistics()
-    stats.register("Num removed", lambda x: x[np.argmin([ind.fitness.values[1] for ind in x])].fitness.values[0])
-    stats.register("Variance", lambda x: x[np.argmin([ind.fitness.values[1] for ind in x])].fitness.values[1])
+        stats.register(s, lambda x, i=i, stats_by=stats_by: x[np.argmin([ind.fitness.values[stats_by] for ind in x])].fitness.values[i])
     
     mut_functs = [toolbox.mutate_high if i+1 < num_islands * 0.4 else toolbox.mutate_low for i in range(num_islands)]
 

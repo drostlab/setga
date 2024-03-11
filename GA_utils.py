@@ -1,12 +1,10 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np 
-from deap import algorithms, base, creator, tools
-import tqdm
+from deap import tools
 import os
 import concurrent.futures
 import random
-import array 
 
 
 class SolutionException(Exception):
@@ -87,8 +85,8 @@ def eaMuPlusLambda_stop_isl(islands, toolbox, mu, lambda_, cxpb, mutpb, ngen,mut
             logbook.record(gen=gen, island = i+1, **record)
             if verbose:
                 print(logbook.stream)
-                
-        print("\n")
+        if verbose:        
+            print("\n")
 
 
     executor = concurrent.futures.ThreadPoolExecutor()
@@ -159,8 +157,8 @@ def plot_pareto(pareto,par,folder,upper_bound = None,lower_bound = None):
     # Save or display the plot
     plt.tight_layout()  # Adjust layout to prevent clipping of labels
     # Save the plot as an image
+    return plt
     
-    plt.savefig(os.path.join(folder, "pareto_front.png")) 
     #plt.show()
 
 def get_results_from_pareto(solutions,pareto,folder,names):
@@ -187,4 +185,4 @@ def get_results(solutions,fitness,folder,names,upper_bound = 0.4, lower_bound = 
     
     sel_sols = np.unique(sel_sols,axis = 0)
     genes = get_removed_from_solution(get_sol_from_indices(np.where(sel_sols.sum(axis=0) <= len(sel_sols)*(1- min_freq))[0],sel_sols.shape[1]),names)
-    np.savetxt(os.path.join(folder,"extracted_genes.txt"),genes, fmt="%s")
+    return genes
