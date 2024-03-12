@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
 Name: SetMiGA
-Version: 0.1
+Version: 1.1
 Summary: library designed to extract a minimal subset from a given set, optimizing a given (set of) objective(s). Based on the DEAP library.
 Home-page: https://github.com/lavakin/SetMiGA
-Download-URL: https://github.com/lavakin/SetMiGA/archive/refs/tags/beta.tar.gz
+Download-URL: https://github.com/lavakin/SetMiGA/archive/refs/tags/v1.1.tar.gz
 Author: Nikola Kalábová
 Author-email: nikola@kalabova.eu
 License: MIT
