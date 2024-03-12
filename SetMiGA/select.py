@@ -109,7 +109,7 @@ def run_minimizer(set_size,eval_ind, stats_by,stats_names,eval_func_kwargs={},mu
     mut_functs = [toolbox.mutate_high if i+1 < num_islands * 0.4 else toolbox.mutate_low for i in range(num_islands)]
 
     islands = [toolbox.population(n=pop_size) for _ in range(num_islands)]
-    population, _ = GA_utils.eaMuPlusLambda_stop_isl(islands,toolbox, mu=round(len(islands[0])), lambda_ = len(islands[0]),cxpb=0.45, mutpb=0.45, ngen=num_gen, mut_functs_isl=mut_functs,stats=stats, verbose=True)
+    population, _ = utils.eaMuPlusLambda_stop_isl(islands,toolbox, mu=round(len(islands[0])), lambda_ = len(islands[0]),cxpb=0.45, mutpb=0.45, ngen=num_gen, mut_functs_isl=mut_functs,stats=stats, verbose=True)
 
     pop = [solution for island in population for solution in island]
 
