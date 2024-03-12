@@ -8,7 +8,7 @@ setup(
   author = 'Nikola Kalábová',              
   author_email = 'nikola@kalabova.eu',     
   url = 'https://github.com/lavakin/SetMiGA',  
-  download_url = 'https://github.com/lavakin/SetMiGA/archive/refs/tags/v1.tar.gz',    
+  download_url = 'https://github.com/lavakin/SetMiGA/archive/refs/tags/v1.1.tar.gz',    
   keywords = ['Genetic algorithms', 'minimal subset', 'multi-objective', "optimization"],   
   install_requires=[          
           'numpy',
