@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+SetMiGA/select.py
+SetMiGA/utils.py
+SetMiGA.egg-info/PKG-INFO
+SetMiGA.egg-info/SOURCES.txt
+SetMiGA.egg-info/dependency_links.txt
+SetMiGA.egg-info/requires.txt
+SetMiGA.egg-info/top_level.txt
