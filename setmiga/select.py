@@ -2,7 +2,7 @@ from deap import base, creator, tools
 import random
 import numpy as np
 import array
-from SetMiGA import utils
+from setmiga import utils
 
 class WrongType(Exception):
     def __init__(self, message):
@@ -115,4 +115,3 @@ def run_minimizer(set_size,eval_ind, stats_by,stats_names,eval_func_kwargs={},mu
 
     pareto_front = tools.sortNondominated(pop, k=pop_size*num_islands,first_front_only=True)
     return np.array(pop),pareto_front
-
