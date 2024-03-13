@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+setmiga/select.py
+setmiga/utils.py
+setmiga.egg-info/PKG-INFO
+setmiga.egg-info/SOURCES.txt
+setmiga.egg-info/dependency_links.txt
+setmiga.egg-info/requires.txt
+setmiga.egg-info/top_level.txt
