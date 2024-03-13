@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: setminga
-Version: 0.2
+Version: 0.3
 Summary: library designed to extract a minimal subset from a given set, optimizing a given (set of) objective(s). Based on the DEAP library.
-Home-page: https://github.com/lavakin/setmiga
+Home-page: https://github.com/lavakin/setminga
 Download-URL: https://github.com/lavakin/setminga/archive/refs/tags/v0.2.tar.gz
 Author: Nikola Kalábová
 Author-email: nikola@kalabova.eu
