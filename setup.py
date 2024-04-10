@@ -8,7 +8,7 @@ setup(
   author = 'Nikola Kalábová',              
   author_email = 'nikola@kalabova.eu',     
   url = 'https://github.com/lavakin/setminga',  
-  download_url = 'https://github.com/lavakin/setminga/archive/refs/tags/v0.2.tar.gz',    
+  download_url = 'https://github.com/lavakin/setminga/archive/refs/tags/v0.3.tar.gz',    
   keywords = ['Genetic algorithms', 'minimal subset', 'multi-objective', "optimization"],   
   install_requires=[          
           'numpy',
