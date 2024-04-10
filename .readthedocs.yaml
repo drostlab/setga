@@ -11,3 +11,8 @@ python:
 
 sphinx:
   configuration: docs/source/conf.py
+
+build:
+  image: latest
+  pre:
+    - sphinx-apidoc -o docs/source ./trapga
