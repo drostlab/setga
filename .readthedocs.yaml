@@ -15,4 +15,4 @@ sphinx:
 build:
   image: latest
   pre:
-    - sphinx-apidoc -o docs/source ./trapga
+    - sphinx-apidoc -o docs/source ./setminga
