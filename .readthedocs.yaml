@@ -2,8 +2,12 @@ version: "2"
 
 build:
   os: "ubuntu-22.04"
+  image: latest
   tools:
     python: "3.10"
+  pre:
+    - pip install -r docs/requirements.txt
+    - sphinx-apidoc -o docs/source ./setminga
 
 python:
   install:
@@ -12,7 +16,3 @@ python:
 sphinx:
   configuration: docs/source/conf.py
 
-build:
-  image: latest
-  pre:
-    - sphinx-apidoc -o docs/source ./setminga
