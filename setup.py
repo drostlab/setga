@@ -7,8 +7,8 @@ setup(
   description = 'library designed to extract a minimal subset from a given set, optimizing a given (set of) objective(s). Based on the DEAP library.',   # Give a short description about your library
   author = 'Nikola Kalábová',              
   author_email = 'nikola@kalabova.eu',     
-  url = 'https://github.com/lavakin/setminga',  
-  download_url = 'https://github.com/lavakin/setminga/archive/refs/tags/v0.3.tar.gz',    
+  url = 'https://github.com/lavakin/setga',  
+  version = "{{VERSION_PLACEHOLDER}}"    
   keywords = ['Genetic algorithms', 'minimal subset', 'multi-objective', "optimization"],   
   install_requires=[          
           'numpy',
