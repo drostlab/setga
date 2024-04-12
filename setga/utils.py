@@ -16,20 +16,32 @@ def varOr(population, toolbox, num_ind, cxpb, mutpb,mutate_funct):
     """Part of an evolutionary algorithm applying only the variation part
     (crossover **and** mutation). The modified individuals have their
     fitness invalidated. The individuals are cloned so returned population is
-    independent of the input population. Same as in the DEAP library except for enabeling 
-    different mutations for different islands
+    independent of the input population. Same as in the DEAP library except for enabling 
+    different mutations for different islands.
 
-    Args:
-        population (array):  list of individuals to vary.
-        toolbox (deap.base.Toolbox): contains the evolution operators.
-        num_ind (int): The number of children to produce at each generation.
-        cxpb (float): The probability of mating two individuals.
-        mutpb (float): The probability of mutating an individual.
-        mutate_funct (function): mutation function
+    :param population: array
+        List of individuals to vary.
+    :type population: list
+    :param toolbox: deap.base.Toolbox
+        Contains the evolution operators.
+    :type toolbox: deap.base.Toolbox
+    :param num_ind: int
+        The number of children to produce at each generation.
+    :type num_ind: int
+    :param cxpb: float
+        The probability of mating two individuals.
+    :type cxpb: float
+    :param mutpb: float
+        The probability of mutating an individual.
+    :type mutpb: float
+    :param mutate_funct: function
+        Mutation function.
+    :type mutate_funct: function
 
-    Returns:
+    :returns:
         _array_: A list of varied individuals that are independent of their
-              parents.
+                parents.
+
     """
     assert (cxpb + mutpb) <= 1.0, (
         "The sum of the crossover and mutation probabilities must be smaller "
@@ -54,21 +66,42 @@ def varOr(population, toolbox, num_ind, cxpb, mutpb,mutate_funct):
     return offspring
 
 
-def eaMuPlusLambda_stop_isl(islands, toolbox, mu, num_ind, cxpb, mutpb, ngen,mut_functs_isl: list, stats = None, stop_after = 100, verbose=__debug__):
+def eaMuPlusLambda_stop_isl(islands, toolbox, mu, num_ind, cxpb, mutpb, ngen,mut_functs_isl: list, stats = None, stop_after = 40, verbose=__debug__):
     """This is the :math:`(\mu + \lambda)` evolutionary algorithm.
 
-    Args:
-        islands (list): list of arrays of islands 
-        toolbox (deap.base.Toolbox): contains the evolution operators.
-        mu (int): The number of individuals to select for the next generation.
-        num_ind (int): The number of children to produce at each generation.
-        cxpb (float): The probability that an offspring is produced by crossover.
-        mutpb (float): The probability that an offspring is produced by mutation.
-        ngen (int): Number of generations
-        mut_functs_isl (list): list of mutation functions for every island
-        stats (deap.tools.Statistics, optional): An object that is updated inplace, optional. Defaults to None.
-        stop_after (int, optional): Number of non-improving generations to stop after. Defaults to 100.
-        verbose (str, optional): Verbose. Defaults to __debug__.
+    :param islands: list
+        List of arrays of islands.
+    :type islands: list
+    :param toolbox: deap.base.Toolbox
+        Contains the evolution operators.
+    :type toolbox: deap.base.Toolbox
+    :param mu: int
+        The number of individuals to select for the next generation.
+    :type mu: int
+    :param num_ind: int
+        The number of children to produce at each generation.
+    :type num_ind: int
+    :param cxpb: float
+        The probability that an offspring is produced by crossover.
+    :type cxpb: float
+    :param mutpb: float
+        The probability that an offspring is produced by mutation.
+    :type mutpb: float
+    :param ngen: int
+        Number of generations.
+    :type ngen: int
+    :param mut_functs_isl: list
+        List of mutation functions for every island.
+    :type mut_functs_isl: list
+    :param stats: deap.tools.Statistics, optional
+        An object that is updated in place, optional. Defaults to None.
+    :type stats: deap.tools.Statistics
+    :param stop_after: int, optional
+        Number of non-improving generations to stop after. Defaults to 100.
+    :type stop_after: int
+    :param verbose: str, optional
+        Verbose. Defaults to __debug__.
+    :type verbose: str
     """
     
     def isl_evaluate(invalid_ind):
@@ -154,45 +187,61 @@ def eaMuPlusLambda_stop_isl(islands, toolbox, mu, num_ind, cxpb, mutpb, ngen,mut
 
 
 def get_sol_from_indices(indices,ind_len):
-    """Getting a solution boolean array based on the indices
+    """Getting a solution boolean array based on the indices.
 
-    Args:
-        indices (np.array): indices of selected items 
-        ind_len (_type_): size of the set
+    :param indices: np.array
+        Indices of selected items.
+    :type indices: np.array
+    :param ind_len: _type_
+        Size of the set.
+    :type ind_len: _type_
 
-    Returns:
-        np.array: returns a solution in the same format as outputed from the optimizer
+    :returns:
+        np.array
+            Returns a solution in the same format as outputted from the optimizer.
     """
     ones = np.ones(ind_len)
     ones[indices] = 0
     return ones
 
 def get_removed_from_solution(solution,names):
-    """get set items, that were not selected by the minimizer
+    """Get set items that were not selected by the minimizer.
 
-    Args:
-        solution (array): Minimizer boolean solution
-        names (np.array): Names of the items of the list in the correct order
+    :param solution: array
+        Minimizer boolean solution.
+    :type solution: array
+    :param names: np.array
+        Names of the items of the list in the correct order.
+    :type names: np.array
 
-    Returns:
-        np.array: set items not selected by minimizer
+    :returns:
+        np.array
+            Set items not selected by minimizer.
     """
     return np.array(names[np.where(solution == 0)[0]])
 
 def plot_pareto(solutons,pareto,upper_bound = None,lower_bound = None):
-    """Plots the final solutions outputed by the minimizer
-    
-    Args:
-        solutons (np.array): all final solutions
-        pareto (np.array): all solutions on the pareto front
-        upper_bound (float, optional): upper bound on p-value for selected solutions. Defaults to None.
-        lower_bound (float, optional): lower bound on p-value for selected solutions. Defaults to None.
+    """Plots the final solutions outputted by the minimizer.
 
-    Raises:
-        SolutionException: Exception when no solution found
+    :param solutions: np.array
+        All final solutions.
+    :type solutions: np.array
+    :param pareto: np.array
+        All solutions on the Pareto front.
+    :type pareto: np.array
+    :param upper_bound: float, optional
+        Upper bound on p-value for selected solutions. Defaults to None.
+    :type upper_bound: float, optional
+    :param lower_bound: float, optional
+        Lower bound on p-value for selected solutions. Defaults to None.
+    :type lower_bound: float, optional
 
-    Returns:
-        matplotib.pyplot: Plotted solutions with pareto front
+    :raises SolutionException:
+        Exception when no solution found.
+
+    :returns:
+        matplotib.pyplot
+            Plotted solutions with Pareto front.
     """
     plt.scatter(solutons[:,0],solutons[:,1],s = 1.5,color='blue', marker='o', label='Solution')
     plt.scatter(pareto[:,0],pareto[:,1],s = 5,color='red', marker='o', label='Front')
@@ -229,23 +278,36 @@ def plot_pareto(solutons,pareto,upper_bound = None,lower_bound = None):
 
 
 def get_results(solutions,fitness,names,upper_bound = 0.4, lower_bound = 0, min_freq = 0.65):
-    """selecting final set of candidate set items from solutions extracted by the minimizer, by taking solutions that appear often in the best solutions
+    """Selecting final set of candidate set items from solutions extracted by the minimizer, by taking solutions that appear often in the best solutions.
 
-    Args:
-        solutons (np.array): all final solutions
-        fitness (np.array): fitness of extracted solutions
-        names (list): names of all set items in the correct order
-        upper_bound (float, optional): upper bound on p-value for selected solutions. Defaults to 0.4.
-        lower_bound (float, optional):  lower bound on p-value for selected solutions. Defaults to 0.
-        min_freq (float, optional): Minimal frequency for a solution to appear in the set of best solutions to be selected. Defaults to 0.65.
+    :param solutions: np.array
+        All final solutions.
+    :type solutions: np.array
+    :param fitness: np.array
+        Fitness of extracted solutions.
+    :type fitness: np.array
+    :param names: list
+        Names of all set items in the correct order.
+    :type names: list
+    :param upper_bound: float, optional
+        Upper bound on p-value for selected solutions. Defaults to 0.4.
+    :type upper_bound: float, optional
+    :param lower_bound: float, optional
+        Lower bound on p-value for selected solutions. Defaults to 0.
+    :type lower_bound: float, optional
+    :param min_freq: float, optional
+        Minimal frequency for a solution to appear in the set of best solutions to be selected. Defaults to 0.65.
+    :type min_freq: float, optional
 
-    Raises:
-        SolutionException: _description_
+    :raises SolutionException:
+        _description_
 
-    Returns:
-        list: final set of candidate set items from solutions extracted by the minimizer
+    :returns:
+        list
+            Final set of candidate set items from solutions extracted by the minimizer.
     """
     fitness_filtered = fitness[np.logical_and(fitness[:,1] < upper_bound,fitness[:,1] >= lower_bound)]
+    
     #pareto_filtered = pareto
     solutions = solutions[np.logical_and(fitness[:,1] < upper_bound,fitness[:,1] >= lower_bound)]
     sel_sols = solutions
