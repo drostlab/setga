@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'setminga'
+project = 'setga'
 copyright = '2024, Nikola Kalábová'
 author = 'Nikola Kalábová'
 
@@ -28,5 +28,5 @@ html_static_path = ['_static']
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../setminga/'))
+sys.path.insert(0, os.path.abspath('../../setga/'))
 
