@@ -8,7 +8,7 @@ setup(
   author = 'Nikola Kalábová',              
   author_email = 'nikola@kalabova.eu',     
   url = 'https://github.com/lavakin/setga',  
-  version = "{{VERSION_PLACEHOLDER}}"    
+  version = "{{VERSION_PLACEHOLDER}}",    
   keywords = ['Genetic algorithms', 'minimal subset', 'multi-objective', "optimization"],   
   install_requires=[          
           'numpy',
