@@ -11,7 +11,7 @@ setup(
   version = "{{VERSION_PLACEHOLDER}}",    
   keywords = ['Genetic algorithms', 'minimal subset', 'multi-objective', "optimization"],   
   long_description = "library designed to extract a minimal subset from a given set, optimizing a given (set of) objective(s). Based on the DEAP library.",
-  project_urls = {"Documentation" :"https://readthedocs.org/projects/setminga/"},
+  project_urls = {"Documentation" :"https://setga.readthedocs.io/en/latest/genindex.html"},
   install_requires=[          
           'numpy',
           'deap',
