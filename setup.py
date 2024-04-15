@@ -1,8 +1,7 @@
 from distutils.core import setup
 setup(
   name = 'setga',         
-  packages = ['setga'],   
-  version = '0.3',      
+  packages = ['setga'], 
   license='MIT',       
   description = 'library designed to extract a minimal subset from a given set, optimizing a given (set of) objective(s). Based on the DEAP library.',   # Give a short description about your library
   author = 'Nikola Kalábová',              
