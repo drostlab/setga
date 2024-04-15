@@ -1,3 +1,7 @@
+.. image:: https://readthedocs.org/projects/setga/badge/?version=latest
+    :target: https://setga.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 # Minimal Subset Optimizer
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
