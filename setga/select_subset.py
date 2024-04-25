@@ -123,7 +123,7 @@ def run_minimizer(set_size,eval_ind, stats_by,stats_names,eval_func_kwargs={},mu
         toolbox.register("select", tools.selSPEA2)
     if selection == "NSGA2":
         toolbox.register("select", tools.selNSGA2)
-    if crossover not in ["SPEA2","NSGA2"]:
+    if selection not in ["SPEA2","NSGA2"]:
         raise WrongType("Unknown type of mating")
     
     toolbox.register("migrate",tools.migRing,k=10,selection = toolbox.select)
