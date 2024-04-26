@@ -124,7 +124,7 @@ def run_minimizer(set_size,eval_ind, stats_by,stats_names,eval_func_kwargs={},mu
     if selection == "NSGA2":
         toolbox.register("select", tools.selNSGA2)
     if selection == "NSGA3":
-        if ref_points == None:
+        if ref_points is None:
             raise WrongType("Ref_points cannot be None")
         toolbox.register("select", tools.selNSGA2,ref_points = ref_points)
     if selection not in ["SPEA2","NSGA2"]:
