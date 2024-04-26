@@ -17,7 +17,7 @@ class WrongType(Exception):
 def run_minimizer(set_size,eval_ind, stats_by,stats_names,eval_func_kwargs={},mutation_rate = 0.001,crossover_rate = 0.02, 
                   pop_size = 150, num_gen = 8000, num_islands = 6, mutation = "bit_flip" , 
                   crossover =  "uniform_partialy_matched", selection = "SPEA2",frac_init_not_removed = 0.01,
-                  create_individual_funct = None, create_individual_func_kwargs={}):
+                  create_individual_funct = None, create_individual_func_kwargs={}, ref_points = None):
     """Run minimizer algorithm to optimize individual solutions.
 
     :param set_size: int
@@ -123,6 +123,10 @@ def run_minimizer(set_size,eval_ind, stats_by,stats_names,eval_func_kwargs={},mu
         toolbox.register("select", tools.selSPEA2)
     if selection == "NSGA2":
         toolbox.register("select", tools.selNSGA2)
+    if selection == "NSGA3":
+        if ref_points == None:
+            raise WrongType("Ref_points cannot be None")
+        toolbox.register("select", tools.selNSGA2,ref_points = ref_points)
     if selection not in ["SPEA2","NSGA2"]:
         raise WrongType("Unknown type of mating")
     
