@@ -241,6 +241,10 @@ def run_minimizer(set_size,eval_ind, stats_by,stats_names,mutation_rate = 0.001,
     if mutation == "inversion":
         mut_functs = [tools.mutInversion] * num_islands
 
+    if mutation == "bit-flip_old":
+        toolbox.register("mutate_low", tools.mutFlipBit, indpb=mutation_rate/2)
+        toolbox.register("mutate_high", tools.mutFlipBit, indpb=mutation_rate)
+        mut_functs = [toolbox.mutate_high if i+1 < num_islands * 0.5 else toolbox.mutate_low for i in range(num_islands)]
     if mutation == "weighted":
         if weights is None:
             raise WrongType("weights cannot be None")
@@ -267,11 +271,13 @@ def run_minimizer(set_size,eval_ind, stats_by,stats_names,mutation_rate = 0.001,
 
 
 
-    if mutation not in ["bit-flip","inversion", "weighted"] and not callable(mutation) and not type(mutation) == list:
+    if mutation not in ["bit-flip","inversion", "weighted","bit-flip_old"] and not callable(mutation) and not type(mutation) == list:
         raise WrongType("Unknown type of mutation")
 
     if crossover == "uniform":
         toolbox.register("mate", cxUniform,cx_rate=crossover_rate,generator = gen_uniform)
+    if crossover == "uniform_old":
+        toolbox.register("mate", tools.cxUniform,indpb=crossover_rate)
     if crossover == "onepoint":
         toolbox.register("mate", tools.cxOnePoint)
     if crossover == "twopoint":
@@ -289,7 +295,7 @@ def run_minimizer(set_size,eval_ind, stats_by,stats_names,mutation_rate = 0.001,
         toolbox.register("mate", cxWeightedUniform, cx_rate = crossover_rate, generator = generate_random_numbers)
     if callable(crossover):
         toolbox.register("mate", crossover)
-    if crossover not in ["uniform", "onepoint","twopoint","partialy_matched","ordered","uniform_partialy_matched","weighted"] and not callable(crossover):
+    if crossover not in ["uniform", "onepoint","twopoint","partialy_matched","ordered","uniform_partialy_matched","weighted","uniform_old"] and not callable(crossover):
         raise WrongType("Unknown type of crossover")
 
     if selection == "SPEA2":

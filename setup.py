@@ -9,6 +9,7 @@ setup(
   author_email = 'nikola@kalabova.eu',     
   url = 'https://github.com/lavakin/setga',  
   version = "{{VERSION_PLACEHOLDER}}",    
+  #version = 1.0,
   keywords = ['Genetic algorithms', 'minimal subset', 'multi-objective', "optimization"],   
   long_description = "library designed to extract a minimal subset from a given set, optimizing a given (set of) objective(s). Based on the DEAP library.",
   project_urls = {"Documentation" :"https://setga.readthedocs.io/en/latest/genindex.html"},
